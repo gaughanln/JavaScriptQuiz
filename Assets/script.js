@@ -10,9 +10,9 @@ var questions = [
 
   { question: "How do you create a function in JavaScript?",
     answers: ["function = myFunction()", "function:myFunction()", "function myFunction()"],
-    correctAnswer: "function myFunction()" }
+    correctAnswer: "function myFunction()" },
 
-  { question: "How do you write an IF statement for executing code if "i" is NOT equal to 8?",
+  { question: "How do you write an IF statement for executing code if 'i' is NOT equal to 8?",
     answers: [ "if (i != 8)", "if (i <= 8)", "if (i == 8)", "if (i === 8)"],
     correctAnswer: "if (!=8)" }
 
