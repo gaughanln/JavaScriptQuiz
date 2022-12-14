@@ -12,31 +12,23 @@ var questions = [
     answers: ["function = myFunction()", "function:myFunction()", "function myFunction()"],
     correctAnswer: "function myFunction()" },
 
+  { question: "JavaScript is the same as Java",
+    answers: ["True", "False"],
+    correctAnswer: "False" },
+
   { question: "How do you write an IF statement for executing code if 'i' is NOT equal to 8?",
     answers: [ "if (i != 8)", "if (i <= 8)", "if (i == 8)", "if (i === 8)"],
-    correctAnswer: "if (!=8)" }
+    correctAnswer: "if (!=8)" },
 
-
-
+  { question: "How do you declare a JavaScript variable?", 
+    answers: ["var cat", "variable cat", "v cat"],
+    correctAnswer: "var cat" },
     ]
 
 // for the for loop
 // questions[i].question
 
-
-      // which list type is best for the answers? I got this from the 08 class activity however they also used this to create the var li.  
-      // li1.textContent = "<header>";
-      // li2.textContent = "<script>";
-      // li3.textContent = "<javascript>";
-      // li4.textContent = "<footer>";      
-
-
-// OTHER QUESTIONS
-// how do you create a function in JavaScript?
-// what is the correct way to write a JavaScript Array?
-// JavaScript is the same thing as Java? T/F
-// How do you declare a JavaScript variable? 
-
+function 
 // functions needed:
 function countdown(){
   // start when the quiz begins
