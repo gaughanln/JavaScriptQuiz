@@ -34,14 +34,24 @@ var questions = [
 // function to start quiz
 function startQuiz() {
   var currentQuestion = questions[currentQuestionIndex].question;
-  
+
   var currentAnswers = questions[currentQuestionIndex].answers;
   console.log(currentQuestion)
 
   // this line is calling the variable we made above to show the text on the page
 question.textContent= currentQuestion
-  for (let index = 0; index < currentAnswers.length; index++) {
-    answers.textContent=currentAnswers
+
+// do we need this for loop for questions too?
+for (let index = 0; index < currentQuestion.length; index++) 
+
+answers.textContent=currentAnswers
+// for loop for answers
+  for (let index = 0; index < currentAnswers.length; index++) 
+  console.log(currentAnswers)
+
+  
+  {
+    
     // must use concats to modify to make it look like i want
     //if the correct answer is chosen, show good job. 
   // so we need/want a next question button to appear functional after the correct answer is given?
@@ -55,6 +65,7 @@ question.textContent= currentQuestion
 
 function countdown(){
   // start when the quiz begins
+  // need a penalty for getting answer wrong
 }
 
 startQuiz()
