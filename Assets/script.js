@@ -3,6 +3,7 @@ var start = document.querySelector(".startQuiz");
 var question = document.querySelector(".questionHeader");
 var answers = document.querySelector(".answers");
 var currentQuestionIndex = 0;
+var score = 0;
 
 
 // Question variables
@@ -33,31 +34,44 @@ var questions = [
 
 // function to start quiz
 function startQuiz() {
-  var currentQuestion = questions[currentQuestionIndex].question;
 
+  questions.innerHTML ="";
+  answers.innerHTML="";
+
+  var currentQuestion = questions[currentQuestionIndex].question;
   var currentAnswers = questions[currentQuestionIndex].answers;
   console.log(currentQuestion)
 
-  // this line is calling the variable we made above to show the text on the page
+  // calling the variable we made above to show the text on the page
 question.textContent= currentQuestion
 
 // do we need this for loop for questions too?
-for (let index = 0; index < currentQuestion.length; index++) 
+// for (let index = 0; index < currentQuestion.length; index++) 
 
 answers.textContent=currentAnswers
+
 // for loop for answers
   for (let index = 0; index < currentAnswers.length; index++) 
   console.log(currentAnswers)
 
-  
+ 
+    //  if(response === questions[i].answer){
+    //       score++;
+    //       alert("Correct!");
+    //  } else {
+    //       alert("WRONG!");
+    //  }
   {
-    
+    // need my logic here - wtf is it?
+    }
     // must use concats to modify to make it look like i want
+
     //if the correct answer is chosen, show good job. 
   // so we need/want a next question button to appear functional after the correct answer is given?
+
     // else, show try again 
   }
-}
+
 
 // functions needed:
 // 
@@ -71,4 +85,4 @@ function countdown(){
 startQuiz()
 // quiz questions + results (incorrect/try again or correct!)
 
-// start.addEventListener("click", XXX );
+start.addEventListener("click", start );

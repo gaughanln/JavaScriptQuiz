@@ -1,25 +1,69 @@
 body {
-  background-color: #900c3f;
+  background-color: #0f4c5c;
+}
+
+.startQuiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fb8b24;
+  border: none;
+  color: floralwhite;
+  text-align: center;
+  font-size: large;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 2px;
+  padding: 10px;
+  /* why won't this center? */
+  border-radius: 4px;
+}
+
+.startQuiz:hover {
+  background-color: #e36414;
+  transform: scale(1.1);
+}
+
+h1 {
+  font-size: 36px;
+  width: 100%;
+  color: floralwhite;
+  font-weight: bolder;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+h2 {
+  display: flex;
+  flex-direction: column;
 }
 
 h3 {
+  display: flex;
+  flex-direction: column;
   font-size: 36px;
   color: floralwhite;
   font-weight: bolder;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   letter-spacing: 1px;
+  margin-left: 15%;
   /* justify-content: center; */
 }
 
 .answers {
+  display: flex;
+  flex-direction: column;
   font-size: 20px;
   color: floralwhite;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* background-color: #fb8b24; */
   letter-spacing: 1px;
   display: inline-flex;
   flex-direction: column;
+  margin-left: 20%;
+
 }
 
 .answers:hover{
-  background-color: #ff5733;
+  background-color: #fb8b24;
 }
