@@ -1,11 +1,13 @@
 // GIVEN I am taking a code quiz
-var question = document.querySelector(".questionHeader");
+var quizQuestion = document.querySelector(".questionHeader");
 var answers = document.querySelector(".answers");
 var timerEl = document.getElementById('countdown');
 var startQuizBtn = document.querySelector(".startQuiz");
 
 var currentQuestionIndex = 0;
 var score = 0;
+
+
 
 // STEP 1:
 // WHEN I click the start button
@@ -57,8 +59,32 @@ var choices = [
 ];
 
 function displayQuizQuestions() {
-  // startQuizBtn.style.display = "none";
+  startQuizBtn.classList.add("hidden");
   var currentQuestion = choices[currentQuestionIndex].question;
+// for loop for questions
+  for (let index = 0; index < currentQuestion.length; index++) {
+
+    quizQuestion.textContent= currentQuestion
+    console.log(question)
+
+
+// for loop for answers
+    for (let index = 0; index < currentAnswers.length; index++);
+answers=[];
+
+  answers.textContent=currentAnswers
+
+if (userAnswer === correctAnswer) { 
+    console.log("Correct answer chosen");
+    // text = "Correct!, Great job";
+  } else (userAnswer != correctAnswer); {
+    console.log("wrong answer chosen");
+    // text = "Try again.";
+    // needs to loop back but how
+  }
+  return;
+  }
+
   // var userAnswer = "";
  
 
@@ -74,7 +100,7 @@ function displayQuizQuestions() {
 // THEN time is subtracted from the clock
 
 // Function checkAnswers(){
-// // for loop for answers - made to create them as answer buttons
+// for loop for answers - made to create them as answer buttons
 // for (let index = 0; index < currentAnswers.length; index++);
 // answers=[];
 //   // document.getElementById("text").innerHTML;
@@ -121,8 +147,8 @@ function displayQuizQuestions() {
 
 
 
-displayQuizQuestions();
-countdown();
+// displayQuizQuestions();
+// countdown();
 // quiz choices + results (incorrect/try again or correct!)
 
 
