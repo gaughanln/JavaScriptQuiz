@@ -1,12 +1,25 @@
-// add query selectors
-var start = document.querySelector(".startQuiz");
+// GIVEN I am taking a code quiz
 var question = document.querySelector(".questionHeader");
 var answers = document.querySelector(".answers");
+var timerEl = document.getElementById('countdown');
+var startQuizBtn = document.querySelector(".startQuiz");
+
 var currentQuestionIndex = 0;
 var score = 0;
 
-// Question variables
-var questions = [
+// STEP 1:
+// WHEN I click the start button
+// THEN a timer starts and I am presented with a question
+startQuizBtn.addEventListener("click", displayQuizQuestions);
+
+function countdown() {
+  var timeLeft = 80 
+}
+
+// STEP 2:
+// WHEN I answer a question
+// THEN I am presented with another question
+var choices = [
   {
     question: "Inside which element do we put the Javascript?",
     answers: ["<header>", "<script>", "<Javascript>", "<footer>"],
@@ -43,67 +56,78 @@ var questions = [
   },
 ];
 
-// for the for loop
-// questions[i].question
+function displayQuizQuestions() {
+  // startQuizBtn.style.display = "none";
+  var currentQuestion = choices[currentQuestionIndex].question;
+  // var userAnswer = "";
+ 
 
-// function to start quiz
-function startQuiz() {
-  // what do these do?
-  questions.innerHTML = "";
-  answers.innerHTML = "";
 
-  var currentQuestion = questions[currentQuestionIndex].question;
-  var currentAnswers = questions[currentQuestionIndex].answers;
-  console.log(currentQuestion);
+  // console.log(currentQuestion);
+  // var currentAnswers = choices[currentQuestionIndex].answers;
 
-  // calling the variable we made above to show the text on the page
+  // countdown();
+}
+
+// STEP 3:
+// WHEN I answer a question incorrectly
+// THEN time is subtracted from the clock
+
+// Function checkAnswers(){
+// // for loop for answers - made to create them as answer buttons
+// for (let index = 0; index < currentAnswers.length; index++);
+// answers=[];
+//   // document.getElementById("text").innerHTML;
+//   // console.log(text);
+//   if (userAnswer === correctAnswer) { 
+//     console.log("Correct answer chosen");
+//     // text = "Correct!, Great job";
+//   } else (userAnswer != correctAnswer); {
+//     console.log("wrong answer chosen");
+//     // text = "Try again.";
+//     // needs to loop back but how
+//   }
+//   return;
+// }
+
+
+// STEP 4:
+// WHEN all questions are answered or the timer reaches 0
+// THEN the game is over
+
+// STEP 5:
+// WHEN the game is over
+// THEN I can save my initials and my score
+
+
+
+// function for answers/questions
+
+
+
   // question.textContent= currentQuestion
-
-  // do we need this for loop for questions too?
-  // for (let index = 0; index < currentQuestion.length; index++)
-
   // answers.textContent=currentAnswers
 
-  // for loop for answers - made to create them as answer buttons
-  for (let index = 0; index < currentAnswers.length; index++);
-    console.log(currentAnswers);
-  
-    // document.getElementById("text").innerHTML;
-    // console.log(text);
-    if (correctAnswer === currentAnswers){ 
-      text = "Correct!, Great job";
-    } else {
-      text = "Try again.";
-    }
-  }
-  // need my logic here - wtf is it?want to loop over all my choices. easiest way is to create buttons using setattributes then run an if statement. If answer = true then say correct, current question ++. elsse if not, then incorrect and still navigate to the next question. Can do an event, or button. find the logic for if/else. include in the else - the timer take seconds away THEN navigate to the next question.
 
   // look at past assignments for the timer situation. start by just having a timer in the first place. if it doesn't take time off - worry about that last.
 
-  //  if(response === questions[i].answer){
-  //       score++;
-  //       alert("Correct!");
-  //  } else {
-  //       alert("WRONG!");
-  //  }
+  
+  // must use concats to modify to make it look like i want?? list view
 
-  // must use concats to modify to make it look like i want
-
-  //if the correct answer is chosen, show good job.
+ 
   // so we need/want a next question button to appear functional after the correct answer is given?
 
-  // else, show try again
 
 
-// functions needed:
-//
 
-function countdown() {
-  // start when the quiz begins
+
+displayQuizQuestions();
+countdown();
+// quiz choices + results (incorrect/try again or correct!)
+
+
+
+// what do we need?
+// // start timer when the quiz begins
   // need a penalty for getting answer wrong
-}
-
-startQuiz();
-// quiz questions + results (incorrect/try again or correct!)
-
-start.addEventListener("click", start);
+  // make answers clickable
