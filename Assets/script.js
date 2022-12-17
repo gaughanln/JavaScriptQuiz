@@ -60,19 +60,18 @@ var choices = [
 
 function displayQuizQuestions() {
   startQuizBtn.classList.add("hidden");
-  var currentQuestion = choices[currentQuestionIndex].question;
+  var currentQuestion = choices[currentQuestionIndex];
+  console.log(currentQuestion.question)
+  console.log(currentQuestion.answers)
+  console.log(currentQuestion.correctAnswer)
+  quizQuestion.textContent= currentQuestion.question
+
+  var currentAnswers = choices[currentQuestionIndex];
+  answers.textContent=currentAnswers.answers
+  
 // for loop for questions
-  for (let index = 0; index < currentQuestion.length; index++) {
+  for (let index = 0; index < currentQuestion.answers.length; index++) {
 
-    quizQuestion.textContent= currentQuestion
-    console.log(question)
-
-
-// for loop for answers
-    for (let index = 0; index < currentAnswers.length; index++);
-answers=[];
-
-  answers.textContent=currentAnswers
 
 if (userAnswer === correctAnswer) { 
     console.log("Correct answer chosen");
@@ -90,7 +89,6 @@ if (userAnswer === correctAnswer) {
 
 
   // console.log(currentQuestion);
-  // var currentAnswers = choices[currentQuestionIndex].answers;
 
   // countdown();
 }
