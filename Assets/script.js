@@ -93,6 +93,20 @@ if (userAnswer === correctAnswer) {
   // countdown();
 }
 
+// currentAnswers.addEventListener("click", checkAnswers())
+
+// function checkAnswers() {
+//   if (userAnswer === correctAnswer) { 
+//     alert("Correct!, Great job");
+//     console.log();
+   
+//   } else (userAnswer != correctAnswer); {
+//     alert("wrong answer chosen");
+//     console.log();
+//     // text = "Try again.";
+//     // needs to loop back but how
+// }
+
 // STEP 3:
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
