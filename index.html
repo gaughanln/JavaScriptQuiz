@@ -11,17 +11,20 @@
   <body>
     <!-- Static header? -->
     <h1>JavaScript Basics Quiz</h1>
-    <button class="startQuiz">Start Quiz</button>
+    <button class="start-quiz">Start Quiz</button>
 
-    <h2 id="timer"></h2>
+    <div class="timer"></div>
 
       <!-- Thhe div class is for each question -->
     <div id="quiz-questions">
         <!-- the <h3> will be the question -->
-        <h3 class="questionHeader"></h3>
-        <div class="answers"></div>
+        <h2 class="questionHeader"></h2>
+        <ul class="answer-choices"></ul>
+        <!-- answer choices will be added here -->
         <p id ="text">  </P>
+          <div class="alert"></div>
     </div>
+    <div class="final-score"></div>
 
     <!-- need div tags for get started, submit, etc -->
 
