@@ -23,8 +23,9 @@ Below are screenshots of various stages of the quiz.
 
 <!-- link -->
 ### Deployment
-Here is the [link](https://gaughanln.github.io/password-generator/) to the live website
+Here is the [link](https://gaughanln.github.io/JavaScriptQuiz/) to the live website
 
 ### Contributing
 Lindsey Gaughan (Me!)
+
 <img src="./Assets/gaughanln.jpg" alt="Lindsey Gaughan - Me!" style="height:200px;" /> 
