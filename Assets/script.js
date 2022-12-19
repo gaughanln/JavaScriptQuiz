@@ -7,18 +7,21 @@ var alertMsg = document.querySelector(".alert");
 var score = document.getElementById("final-score");
 var initials = document.querySelector(".initials");
 var submit = document.querySelector(".submit-initials");
+var gameRules = document.getElementById("#intro");
 
 var currentQuestionIndex = 0;
 var score = 0;
 var timeLeft = 60;
+
 // hides the initial bar until quizEnd
-initials.classList.add("hidden");
+// initials.classList.add("hidden");
 // submit.classList.add("hidden");
 
 // STEP 1:
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
-startQuizBtn.addEventListener("click", displayQuizQuestions);
+
+intro.addEventListener("click", displayQuizQuestions);
 
 // countdown timer (60 seconds)
 function countdown() {
@@ -38,6 +41,7 @@ function countdown() {
     }
   }, 1000);
 }
+
 
 // STEP 2:
 // WHEN I answer a question
@@ -82,7 +86,9 @@ var choices = [
 
 function displayQuizQuestions() {
   // causes "start quiz" button to hide once the quiz begins
-  startQuizBtn.classList.add("hidden");
+  intro.classList.add("hidden");
+  // gameRules.classList.add("hidden");
+
   countdown(timeLeft);
 
   // producing the score element
@@ -109,35 +115,47 @@ function displayQuizQuestions() {
       if (this.textContent !== currentQuestion.correctAnswer) {
         currentQuestionIndex++;
         displayQuizQuestions();
-        alertMsg.textContent = "❌ Wrong answer ❌";
+        alertMsg.textContent = "Wrong answer 🫠";
         console.log("❌ Wrong answer chosen ❌");
         //  deducts 5 seconds if question is answered incorrectly
         timeLeft -= 5;
       } else {
         currentQuestionIndex++;
         displayQuizQuestions();
-        alertMsg.textContent = "Correct, great job!";
+        alertMsg.textContent = "Correct, great job! 🥳";
         score++;
+        
       }
     });
     answerChoices.appendChild(answerItem);
   }
 }
 
+// function startQuiz () {
+//   countdown();
+//   displayQuizQuestions();
+// } 
+
+
+
 // STEP 3:
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
-function endQuiz() {
-  initials.classList.remove("hidden");
-  submit.classList.remove("hidden");
 
+function endQuiz() {
+  // initials.classList.remove("hidden");
+  // submit.classList.remove("hidden");
+
+  // Produces the final score
   document.getElementById("final-score").innerHTML =
     "Quiz complete! Your score is: " + score;
+
   // Remove the questions from the page
   quizQuestion.textContent = "";
   answerChoices.innerHTML = "";
   alertMsg.textContent = "";
 
+// initiates the submit button to save initials
 submit.addEventListener("click", function saveInitials(event){
 event.preventDefault();
 initials = initials.value;
@@ -153,14 +171,6 @@ saveInitials();
 return;
 }
 
-  // function getName(event) {
-  //   if (event.key === "Enter") {
-  //     var initials = initials.value;
-
-  //     console.log(initials);
-  //   }}
-  // getName();
-// need to hide submit button
 
 
 // STEP 4:

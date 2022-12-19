@@ -9,29 +9,44 @@
     <link rel="stylesheet" href="./Assets/style.css" />
   </head>
   <body>
-    <!-- Static header? -->
+    <!-- Static header -->
     <h1>JavaScript Basics Quiz</h1>
-    <button class="start-quiz">Start Quiz</button>
 
+    <!-- instructions and start button -->
+    <div id="intro">
+      <button class="start-quiz">Start Quiz</button>
+
+      <p id="game-rules">
+        You'll have 60 seconds to complete the basic JavaScript quiz. For each
+        question answered wrong, you will be docked 5 seconds from your time
+        remaining. Once completed, submit your initials to save your score.
+      </p>
+    </div>
+
+    <!-- timer -->
     <h2 id="timer"></h2>
 
-    <!-- Thhe div class is for each question -->
+    <!-- The div class is for each question -->
     <div id="quiz-questions">
-      <!-- the <h3> will be the question -->
+      <!-- the questions & answers -->
       <h3 class="questionHeader"></h3>
       <ul class="answer-choices"></ul>
-      <!-- answer choices will be added here -->
+
+      <!-- alerts -->
       <p id="text"></p>
       <div class="alert"></div>
-<form onsubmit="getInitials(event)">
-  
+
+      <!-- score -->
+      <div id="final-score"></div>
+      <form onsubmit="getInitials(event)">
         <input type="text" class="initials" />
         <button class="submit-initials">Submit</button>
       </form>
     </div>
-    <div id="final-score"></div>
 
-    <!-- need div tags for get started, submit, etc -->
+    <!-- restart quiz button (inactive) -->
+    <!-- <div id="restart">
+      <button class="try-again">Start Quiz </button></div> -->
 
     <!-- linked Java -->
     <script src="./Assets/script.js"></script>
