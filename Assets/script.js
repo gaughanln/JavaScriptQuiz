@@ -1,22 +1,51 @@
 // GIVEN I am taking a code quiz
 var quizQuestion = document.querySelector(".questionHeader");
 var answerChoices = document.querySelector(".answer-choices");
-var timerEl = document.getElementById("countdown");
+var timerEl = document.getElementById("timer");
 var startQuizBtn = document.querySelector(".start-quiz");
 var alertMsg = document.querySelector(".alert");
+var score = document.getElementById("final-score")
 
 var currentQuestionIndex = 0;
 var score = 0;
+var timeLeft = 60;
 
 // STEP 1:
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
-startQuizBtn.addEventListener("click", displayQuizQuestions);
+startQuizBtn.addEventListener("click", displayQuizQuestions)
+// {
+//   countdown();
+// });
 
 // countdown timer (80 seconds)
-function startCountdown() {
-  var timeLeft = 80;
+function countdown() {
+  
+
+  var timeInterval = setInterval(function () {
+    if (timeLeft > 1) {
+      // Set the `textContent` of `timerEl` to show the remaining seconds
+      timerEl.textContent = timeLeft + ' seconds remaining';
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+      timerEl.textContent = timeLeft + ' second remaining';
+      timeLeft--;
+    } else {
+      // Once `timeLeft` gets to 0, set time is up
+      timerEl.textContent = 'TIME IS UP!';
+      clearInterval(timeInterval);
+
+       // Remove the questions from the page
+       quizQuestion.textContent = "";
+       answerChoices.innerHTML = "";
+       alertMsg.textContent = "";
+
+      document.getElementById("final-score").innerHTML = "Quiz complete! Your score is: " + score;
+    }
+  }, 1000);
 }
+// countdown();
 
 // STEP 2:
 // WHEN I answer a question
@@ -61,9 +90,12 @@ var choices = [
 function displayQuizQuestions() {
   // causes button to hide once the quiz begins
   startQuizBtn.classList.add("hidden");
+countdown(timeLeft);
 
+// producing the score element
   if (currentQuestionIndex === choices.length) {
     console.log("Quiz complete! Your score is: " + score);
+    document.getElementById("final-score").innerHTML = "Quiz complete! Your score is: " + score;
     return;
   }
 
@@ -79,23 +111,30 @@ function displayQuizQuestions() {
   // for loop for questions
   var userAnswer = "";
   for (let index = 0; index < currentQuestion.answers.length; index++) {
-   
     var answerItem = document.createElement("li");
     answerItem.textContent = currentQuestion.answers[index];
     answerItem.addEventListener("click", function () {
       
-      if (this.textContent === currentQuestion.correctAnswer) {
-        currentQuestionIndex++;
-        displayQuizQuestions();
-        console.log("Correct answer chosen");
-      } else {
-        alertMsg.textContent = "❌ Wrong answer, try again. ❌"
+      // want code to move on and not stay on one questin if it isn't answered correctly, how?
+      if (this.textContent !== currentQuestion.correctAnswer) {
+       currentQuestionIndex++;
+        displayQuizQuestions(); 
+        alertMsg.textContent = "❌ Wrong answer ❌"
         console.log("❌ Wrong answer chosen ❌");
+      //  deducts 5 seconds if question is answered incorrectly
+        timeLeft -= 5;
+          
+      } else {
+        currentQuestionIndex++;
+        displayQuizQuestions(); 
+        alertMsg.textContent = "Correct, great job!"
+        score++;
       }
     });
     answerChoices.appendChild(answerItem);
   }
 }
+
 
 // STEP 3:
 // WHEN I answer a question incorrectly

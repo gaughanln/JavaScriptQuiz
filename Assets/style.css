@@ -36,12 +36,13 @@ h1 {
   text-align: center;
 }
 
-.timer {
+h2 {
   display: flex;
   flex-direction: column;
+  color: pink;
 }
 
-h2 {
+h3 {
   display: flex;
   flex-direction: column;
   font-size: 36px;
