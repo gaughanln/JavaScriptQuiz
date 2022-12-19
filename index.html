@@ -15,14 +15,19 @@
 
     <h2 id="timer"></h2>
 
-      <!-- Thhe div class is for each question -->
+    <!-- Thhe div class is for each question -->
     <div id="quiz-questions">
-        <!-- the <h3> will be the question -->
-        <h3 class="questionHeader"></h3>
-        <ul class="answer-choices"></ul>
-        <!-- answer choices will be added here -->
-        <p id ="text">  </P>
-          <div class="alert"></div>
+      <!-- the <h3> will be the question -->
+      <h3 class="questionHeader"></h3>
+      <ul class="answer-choices"></ul>
+      <!-- answer choices will be added here -->
+      <p id="text"></p>
+      <div class="alert"></div>
+<form onsubmit="getInitials(event)">
+  
+        <input type="text" class="initials" />
+        <button class="submit-initials">Submit</button>
+      </form>
     </div>
     <div id="final-score"></div>
 

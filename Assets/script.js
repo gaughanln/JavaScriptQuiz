@@ -4,52 +4,45 @@ var answerChoices = document.querySelector(".answer-choices");
 var timerEl = document.getElementById("timer");
 var startQuizBtn = document.querySelector(".start-quiz");
 var alertMsg = document.querySelector(".alert");
-var score = document.getElementById("final-score")
+var score = document.getElementById("final-score");
+var initials = document.querySelector(".initials");
+var submit = document.querySelector(".submit-initials");
 
 var currentQuestionIndex = 0;
 var score = 0;
 var timeLeft = 60;
+// hides the initial bar until quizEnd
+initials.classList.add("hidden");
+// submit.classList.add("hidden");
 
 // STEP 1:
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
-startQuizBtn.addEventListener("click", displayQuizQuestions)
-// {
-//   countdown();
-// });
+startQuizBtn.addEventListener("click", displayQuizQuestions);
 
-// countdown timer (80 seconds)
+// countdown timer (60 seconds)
 function countdown() {
-  
-
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       // Set the `textContent` of `timerEl` to show the remaining seconds
-      timerEl.textContent = timeLeft + ' seconds remaining';
+      timerEl.textContent = timeLeft + " seconds remaining";
       timeLeft--;
     } else if (timeLeft === 1) {
       // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-      timerEl.textContent = timeLeft + ' second remaining';
+      timerEl.textContent = timeLeft + " second remaining";
       timeLeft--;
     } else {
       // Once `timeLeft` gets to 0, set time is up
-      timerEl.textContent = 'TIME IS UP!';
+      timerEl.textContent = "TIME IS UP!";
       clearInterval(timeInterval);
-
-       // Remove the questions from the page
-       quizQuestion.textContent = "";
-       answerChoices.innerHTML = "";
-       alertMsg.textContent = "";
-
-      document.getElementById("final-score").innerHTML = "Quiz complete! Your score is: " + score;
     }
   }, 1000);
 }
-// countdown();
 
 // STEP 2:
 // WHEN I answer a question
 // THEN I am presented with another question
+// QUESTION / ANSWERS / CORRECT ANSWER
 var choices = [
   {
     question: "Inside which element do we put the Javascript?",
@@ -88,15 +81,13 @@ var choices = [
 ];
 
 function displayQuizQuestions() {
-  // causes button to hide once the quiz begins
+  // causes "start quiz" button to hide once the quiz begins
   startQuizBtn.classList.add("hidden");
-countdown(timeLeft);
+  countdown(timeLeft);
 
-// producing the score element
-  if (currentQuestionIndex === choices.length) {
-    console.log("Quiz complete! Your score is: " + score);
-    document.getElementById("final-score").innerHTML = "Quiz complete! Your score is: " + score;
-    return;
+  // producing the score element
+  if (timeLeft <= 0 || currentQuestionIndex === choices.length) {
+    endQuiz();
   }
 
   var currentQuestion = choices[currentQuestionIndex];
@@ -114,20 +105,18 @@ countdown(timeLeft);
     var answerItem = document.createElement("li");
     answerItem.textContent = currentQuestion.answers[index];
     answerItem.addEventListener("click", function () {
-      
       // want code to move on and not stay on one questin if it isn't answered correctly, how?
       if (this.textContent !== currentQuestion.correctAnswer) {
-       currentQuestionIndex++;
-        displayQuizQuestions(); 
-        alertMsg.textContent = "❌ Wrong answer ❌"
+        currentQuestionIndex++;
+        displayQuizQuestions();
+        alertMsg.textContent = "❌ Wrong answer ❌";
         console.log("❌ Wrong answer chosen ❌");
-      //  deducts 5 seconds if question is answered incorrectly
+        //  deducts 5 seconds if question is answered incorrectly
         timeLeft -= 5;
-          
       } else {
         currentQuestionIndex++;
-        displayQuizQuestions(); 
-        alertMsg.textContent = "Correct, great job!"
+        displayQuizQuestions();
+        alertMsg.textContent = "Correct, great job!";
         score++;
       }
     });
@@ -135,10 +124,44 @@ countdown(timeLeft);
   }
 }
 
-
 // STEP 3:
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
+function endQuiz() {
+  initials.classList.remove("hidden");
+  submit.classList.remove("hidden");
+
+  document.getElementById("final-score").innerHTML =
+    "Quiz complete! Your score is: " + score;
+  // Remove the questions from the page
+  quizQuestion.textContent = "";
+  answerChoices.innerHTML = "";
+  alertMsg.textContent = "";
+
+submit.addEventListener("click", function saveInitials(event){
+event.preventDefault();
+initials = initials.value;
+console.log(initials);
+
+  //  saves the score in local storage
+  localStorage.setItem("score", score);
+  localStorage.setItem("initials", initials);
+
+saveInitials();
+} ) 
+
+return;
+}
+
+  // function getName(event) {
+  //   if (event.key === "Enter") {
+  //     var initials = initials.value;
+
+  //     console.log(initials);
+  //   }}
+  // getName();
+// need to hide submit button
+
 
 // STEP 4:
 // WHEN all questions are answered or the timer reaches 0
@@ -147,17 +170,6 @@ countdown(timeLeft);
 // STEP 5:
 // WHEN the game is over
 // THEN I can save my initials and my score
-
-
+// with a form, also need to tell it what it needs to save
 
 // look at past assignments for the timer situation. start by just having a timer in the first place. if it doesn't take time off - worry about that last.
-
-
-// displayQuizQuestions();
-// countdown();
-// quiz choices + results (incorrect/try again or correct!)
-
-// what do we need?
-// // start timer when the quiz begins
-// need a penalty for getting answer wrong
-// make answers clickable
