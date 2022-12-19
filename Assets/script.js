@@ -8,13 +8,14 @@ var score = document.getElementById("final-score");
 var initials = document.querySelector(".initials");
 var submit = document.querySelector(".submit-initials");
 var gameRules = document.getElementById("#intro");
+// var form = getElementById("end-game");
 
 var currentQuestionIndex = 0;
 var score = 0;
 var timeLeft = 60;
 
 // hides the initial bar until quizEnd
-// initials.classList.add("hidden");
+initials.classList.add("hidden");
 // submit.classList.add("hidden");
 
 // STEP 1:
@@ -85,10 +86,10 @@ var choices = [
 ];
 
 function displayQuizQuestions() {
-  // causes "start quiz" button to hide once the quiz begins
-  intro.classList.add("hidden");
-  // gameRules.classList.add("hidden");
+  // causes "start quiz" button and text to hide once the quiz begins
+  intro.style.display = "none";
 
+  // countdown(timeLeft);
   countdown(timeLeft);
 
   // producing the score element
@@ -124,7 +125,7 @@ function displayQuizQuestions() {
         displayQuizQuestions();
         alertMsg.textContent = "Correct, great job! 🥳";
         score++;
-        
+
       }
     });
     answerChoices.appendChild(answerItem);
@@ -136,15 +137,20 @@ function displayQuizQuestions() {
 //   displayQuizQuestions();
 // } 
 
-
+// hides the submit and initial text box
+submit.style.display = "none";
+initials.style.display = "none";
 
 // STEP 3:
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
 
 function endQuiz() {
-  // initials.classList.remove("hidden");
-  // submit.classList.remove("hidden");
+  initials.classList.remove("hidden");
+  submit.classList.remove("hidden");
+
+  submit.style.display = "block";
+  initials.style.display = "block";
 
   // Produces the final score
   document.getElementById("final-score").innerHTML =
@@ -155,20 +161,21 @@ function endQuiz() {
   answerChoices.innerHTML = "";
   alertMsg.textContent = "";
 
-// initiates the submit button to save initials
-submit.addEventListener("click", function saveInitials(event){
-event.preventDefault();
-initials = initials.value;
-console.log(initials);
+  // initiates the submit button to save initials
+  submit.addEventListener("click", function saveInitials(event) {
+    event.preventDefault();
+    initials = initials.value;
+    console.log(initials);
 
-  //  saves the score in local storage
-  localStorage.setItem("score", score);
-  localStorage.setItem("initials", initials);
+    //  saves the score in local storage
+    localStorage.setItem("score", score);
+    localStorage.setItem("initials", initials);
 
-saveInitials();
-} ) 
+    saveInitials();
+    // form.reset();
+  })
 
-return;
+  return;
 }
 
 
@@ -180,6 +187,3 @@ return;
 // STEP 5:
 // WHEN the game is over
 // THEN I can save my initials and my score
-// with a form, also need to tell it what it needs to save
-
-// look at past assignments for the timer situation. start by just having a timer in the first place. if it doesn't take time off - worry about that last.

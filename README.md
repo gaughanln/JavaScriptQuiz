@@ -2,26 +2,29 @@
 
 ## Description
 
-I've created a timed quiz on JavaScript basics. Participants will be asked a series of questions with a 10 minute timer. For every wrong answer, 30 seconds will be taken off the clock. The quiz is over when the particpant has completed it or ran out of time. The participant will be able to enter their initials next to their score and reference their past high scores. 
+I've created a timed quiz on JavaScript basics. Participants will be asked a series of questions with a 60 second timer. For every wrong answer, 5 seconds will be taken off the clock. The quiz is over when the particpant has completed it or run out of time. The participant will be able to enter their initials next to their score and reference their past high scores. 
 
 #### Criteria:
 
-* Create a dynamic HTML and CSS style sheet
-* 
+* Start button that initiates the quiz
+* A timer that starts once the quiz is initiated and questions are shown
+* Time is subtracted from the timer when the incorrect answer is chosen
+* When the game is over, you can save your initials and score
 
 
 ### End Product 
-Below is a screenshot of the initial prompt.
+Below are screenshots of various stages of the quiz.
 
 
-<!-- add updated screenshot -->
-![screenshot of Lindsey Gaughan finished portfolio](Assets/password%20generator%20screenshot.png)
+<!-- screenshots -->
+![screenshot1 of JS quiz](Assets/screenshot1.png)
+![screenshot1 of JS quiz](Assets/screenshot2.png)
+![screenshot1 of JS quiz](Assets/screenshot3.png)
 
-<!-- add updated link -->
+<!-- link -->
 ### Deployment
 Here is the [link](https://gaughanln.github.io/password-generator/) to the live website
 
 ### Contributing
 Lindsey Gaughan (Me!)
-<!-- change photo -->
-<img src="./Assets/gaughanln.jpg" alt="Lindsey Gaughan - Me!" style="height:300px;" /> 
+<img src="./Assets/gaughanln.jpg" alt="Lindsey Gaughan - Me!" style="height:200px;" /> 
