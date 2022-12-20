@@ -8,23 +8,18 @@ var score = document.getElementById("final-score");
 var initials = document.querySelector(".initials");
 var submit = document.querySelector(".submit-initials");
 var gameRules = document.getElementById("#intro");
-// var form = getElementById("end-game");
 
 var currentQuestionIndex = 0;
 var score = 0;
 var timeLeft = 60;
 
-// hides the initial bar until quizEnd
-initials.classList.add("hidden");
-// submit.classList.add("hidden");
+// Start button to begin quiz
+intro.addEventListener("click", function startQuiz () {
+  countdown(timeLeft);
+  displayQuizQuestions();
+} );
 
-// STEP 1:
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-
-intro.addEventListener("click", displayQuizQuestions);
-
-// countdown timer (60 seconds)
+// Timer function (60 seconds)
 function countdown() {
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
@@ -43,10 +38,6 @@ function countdown() {
   }, 1000);
 }
 
-
-// STEP 2:
-// WHEN I answer a question
-// THEN I am presented with another question
 // QUESTION / ANSWERS / CORRECT ANSWER
 var choices = [
   {
@@ -85,12 +76,10 @@ var choices = [
   },
 ];
 
+// Quiz function
 function displayQuizQuestions() {
   // causes "start quiz" button and text to hide once the quiz begins
   intro.style.display = "none";
-
-  // countdown(timeLeft);
-  countdown(timeLeft);
 
   // producing the score element
   if (timeLeft <= 0 || currentQuestionIndex === choices.length) {
@@ -128,29 +117,25 @@ function displayQuizQuestions() {
 
       }
     });
-    answerChoices.appendChild(answerItem);
-  }
-}
+   
 
-// function startQuiz () {
-//   countdown();
-//   displayQuizQuestions();
-// } 
+    answerChoices.appendChild(answerItem);
+  } 
+}
 
 // hides the submit and initial text box
 submit.style.display = "none";
 initials.style.display = "none";
 
-// STEP 3:
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-
+// end of quiz function
 function endQuiz() {
-  initials.classList.remove("hidden");
-  submit.classList.remove("hidden");
+  // clear interval time left
+  clearInterval(timeLeft);
 
+  // brings back the submit button and initial box
   submit.style.display = "block";
   initials.style.display = "block";
+  
 
   // Produces the final score
   document.getElementById("final-score").innerHTML =
@@ -178,12 +163,3 @@ function endQuiz() {
   return;
 }
 
-
-
-// STEP 4:
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-
-// STEP 5:
-// WHEN the game is over
-// THEN I can save my initials and my score
